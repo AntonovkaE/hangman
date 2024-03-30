@@ -1,0 +1,65 @@
+.gallows {
+  background-image: url("../public/gallows.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 353px;
+  height: 581px;
+  position: relative;
+}
+
+.man {
+  display: flex;
+}
+
+.man__head {
+  position: absolute;
+  border: #888888 solid 5px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  top: 25%;
+  left: 70%;
+}
+
+.man__hand {
+  position: absolute;
+  border: #888888 solid 2px;
+  height: 150px;
+  background: #888888;
+  width: 1px;
+  transform: rotate(45deg);
+  top: 30%;
+  left: 100%;
+}
+
+.man__hand_right {
+  transform: rotate(-45deg);
+  left: 70%;
+}
+
+.man__body {
+  position: absolute;
+  border: #888888 solid 2px;
+  height: 200px;
+  background: #888888;
+  width: 1px;
+  top: 43%;
+  left: 85%;
+}
+
+.man__leg {
+  position: absolute;
+  border: #888888 solid 2px;
+  height: 150px;
+  background: #888888;
+  width: 1px;
+  transform: rotate(30deg);
+  top: 76%;
+  left: 74%;
+
+}
+
+.man__leg_right {
+  transform: rotate(-30deg);
+  left: 96%;
+}
