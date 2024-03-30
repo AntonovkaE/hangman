@@ -6,7 +6,6 @@
   height: 581px;
   position: relative;
 }
-
 .man {
   display: flex;
 }
@@ -24,17 +23,17 @@
 .man__hand {
   position: absolute;
   border: #888888 solid 2px;
-  height: 150px;
+  height: 100px;
   background: #888888;
   width: 1px;
   transform: rotate(45deg);
-  top: 30%;
-  left: 100%;
+  top: 40%;
+  left: 95%;
 }
 
 .man__hand_right {
   transform: rotate(-45deg);
-  left: 70%;
+  left: 75%;
 }
 
 .man__body {
