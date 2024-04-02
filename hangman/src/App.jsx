@@ -21,7 +21,6 @@ function App() {
       if (word.includes(letter)) {
         setGuessedLetters([... guessedLetters, letter]);
       } else {
-        console.log(mistakes)
         setMistakes(mistakes + 1);
       }
     }
@@ -43,14 +42,16 @@ function App() {
       setIsWinner(true)
     }
 
-
   }, [checkedLetters])
 
 
   const resetGame = () => {
+    setMistakes(0);
     setWord(chooseRandomWord());
     setGuessedLetters([]);
-    setMistakes(0);
+    setCheckedLetters([])
+    setIsWinner(false)
+    setIsLooser(false)
   };
 
   return (
