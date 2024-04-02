@@ -1,0 +1,30 @@
+.key_right {
+  color: green;
+  font-weight: bold;
+  background: lightgreen;
+}
+.key_error {
+  color: red;
+  background: #888888;
+  text-decoration: line-through red;
+  cursor: none;
+}
+
+.key:disabled {
+  cursor: unset;
+}
+
+
+.key:disabled:hover {
+  border-color: #f9f9f9;
+  transition: border-color 0s;
+  box-sizing: border-box;
+
+}
+.key_error:disabled:hover {
+  color: red;
+  background: #888888;
+  border-color: #888888;
+  text-decoration: line-through red;
+  cursor: none;
+}
