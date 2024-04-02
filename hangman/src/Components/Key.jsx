@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Key.css'
-function Key({id, onClick, disabled, isRight}) {
-  const [isChecked, setIsChecked] = useState(false)
-  function handleClick(e) {
-    onClick(id, e)
+function Key({id, onClick, disabled, guessedLetters, checkedLetters}) {
+  function handleClick() {
+    onClick(id)
   }
-  useEffect(() => {
-    setIsChecked(isRight.includes(id))
-    // console.log(isRight, id, isRight.includes(id))
-  },[isRight])
 
   return (<li>
-      <button disabled={disabled} className="key" onClick={handleClick}>{id}</button>
+      <button disabled={disabled} className={guessedLetters.includes(id) ? 'key key_right' : checkedLetters.includes(id) ? 'key key_error' : 'key'} onClick={handleClick}>{id}</button>
     </li>
 
   );

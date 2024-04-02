@@ -9,16 +9,19 @@ function App() {
 
   const [word, setWord] = useState('счастье');
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const [checkedLetters, setCheckedLetters] = useState([])
   const word_arr = word.split('');
   const [mistakes, setMistakes] = useState(0);
   const [isWinner, setIsWinner] = useState(false)
   const [isLooser, setIsLooser] = useState(false)
-  const keyClick = (letter, event) => {
-    if (!guessedLetters.includes(letter)) {
-      event.target.classList.add('key_right');
-      setGuessedLetters([... guessedLetters, letter]);
-      if (!word.includes(letter)) {
-        event.target.classList.add('key_error');
+  const keyClick = (letter) => {
+
+    if (!checkedLetters.includes(letter)) {
+      setCheckedLetters([... checkedLetters, letter]);
+      if (word.includes(letter)) {
+        setGuessedLetters([... guessedLetters, letter]);
+      } else {
+        console.log(mistakes)
         setMistakes(mistakes + 1);
       }
     }
@@ -41,7 +44,7 @@ function App() {
     }
 
 
-  }, [guessedLetters])
+  }, [checkedLetters])
 
 
   const resetGame = () => {
@@ -53,7 +56,7 @@ function App() {
   return (
     <>
       <Word word={word_arr} guessedLetter={guessedLetters}/>
-      <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters}></Keyboard>
+      <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters} checkedLetters={checkedLetters}></Keyboard>
       <Gallows/>
       {isWinner && <p className="result-message">You won!</p>}
       {isLooser && (
