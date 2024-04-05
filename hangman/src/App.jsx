@@ -5,20 +5,22 @@ import Keyboard from './Components/Keyboard.jsx';
 import Word from './Components/Word.jsx';
 
 function App() {
-  const words = ['дочь', 'сон', 'банан'];
+  const words = ['letter', 'phone', 'dust'];
 
-  const [word, setWord] = useState('счастье');
+  const [word, setWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [checkedLetters, setCheckedLetters] = useState([])
   const word_arr = word.split('');
   const [mistakes, setMistakes] = useState(0);
   const [isWinner, setIsWinner] = useState(false)
   const [isLooser, setIsLooser] = useState(false)
-  const keyClick = (letter) => {
 
+  const keyClick = (letter) => {
     if (!checkedLetters.includes(letter)) {
-      setCheckedLetters([... checkedLetters, letter]);
+      console.log(checkedLetters, letter)
+      setCheckedLetters([...checkedLetters, letter]);
       if (word.includes(letter)) {
+        console.log(guessedLetters, letter)
         setGuessedLetters([... guessedLetters, letter]);
       } else {
         setMistakes(mistakes + 1);
@@ -44,6 +46,19 @@ function App() {
 
   }, [checkedLetters])
 
+  // useEffect(() => {
+  //   function handleKeyDown(e) {
+  //     console.log(checkedLetters)
+  //     keyClick(e.key);
+  //   }
+  //
+  //   document.addEventListener('keydown', handleKeyDown);
+  //
+  //   return function cleanup() {
+  //     document.removeEventListener('keydown', handleKeyDown);
+  //   }
+  // }, []);
+
 
   const resetGame = () => {
     setMistakes(0);
@@ -56,9 +71,10 @@ function App() {
 
   return (
     <>
+      <h1 className="text-3xl font-bold underline">Hangman</h1>
       <Word word={word_arr} guessedLetter={guessedLetters}/>
       <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters} checkedLetters={checkedLetters}></Keyboard>
-      <Gallows/>
+      <Gallows mistakes={mistakes}/>
       {isWinner && <p className="result-message">You won!</p>}
       {isLooser && (
         <p className="result-message">You lost! The word was: {word}</p>
