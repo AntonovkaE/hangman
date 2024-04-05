@@ -5,7 +5,7 @@ import Key from './Key.jsx';
 
 function Keyboard({onClick, isGameEnded, guessedLetters, checkedLetters}) {
   return (
-    <ul className="keyboard">
+    <ul className="keyboard my-5">
       {arr.map(key => {
         return <Key disabled={isGameEnded} onClick={onClick} key={key} id={key} guessedLetters={guessedLetters} checkedLetters={checkedLetters}>{key}</Key>
       })}

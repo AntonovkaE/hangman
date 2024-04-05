@@ -2,8 +2,6 @@
   background-image: url("../public/gallows.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 353px;
-  height: 581px;
   position: relative;
 }
 .man {
@@ -14,10 +12,10 @@
   position: absolute;
   border: #888888 solid 5px;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 5rem;
+  height: 5rem;
   top: 25%;
-  left: 70%;
+  left: 65%;
 }
 
 .man__hand {

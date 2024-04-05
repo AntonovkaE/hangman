@@ -17,7 +17,6 @@ function App() {
 
   const keyClick = (letter) => {
     if (!checkedLetters.includes(letter)) {
-      console.log(checkedLetters, letter)
       setCheckedLetters([...checkedLetters, letter]);
       if (word.includes(letter)) {
         console.log(guessedLetters, letter)
@@ -71,7 +70,7 @@ function App() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hangman</h1>
+      <h1 className="text-3xl font-bold underline my-5">Hangman</h1>
       <Word word={word_arr} guessedLetter={guessedLetters}/>
       <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters} checkedLetters={checkedLetters}></Keyboard>
       <Gallows mistakes={mistakes}/>
