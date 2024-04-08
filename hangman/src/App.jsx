@@ -3,6 +3,7 @@ import './App.css';
 import Gallows from './Gallows.jsx';
 import Keyboard from './Components/Keyboard.jsx';
 import Word from './Components/Word.jsx';
+import Modal from './Components/Modal.jsx';
 
 function App() {
   const words = ['letter', 'phone', 'dust'];
@@ -14,6 +15,7 @@ function App() {
   const [mistakes, setMistakes] = useState(0);
   const [isWinner, setIsWinner] = useState(false)
   const [isLooser, setIsLooser] = useState(false)
+  const [isModalOpened, setIsModalOpened] = useState(false)
 
   const keyClick = (letter) => {
     if (!checkedLetters.includes(letter)) {
@@ -26,6 +28,10 @@ function App() {
       }
     }
   };
+
+ useEffect(() => {
+   setIsModalOpened(true)
+ },[isWinner, isLooser])
 
   const chooseRandomWord = () => {
     const randomIndex = Math.floor(Math.random() * words.length);
@@ -74,13 +80,11 @@ function App() {
       <Word word={word_arr} guessedLetter={guessedLetters}/>
       <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters} checkedLetters={checkedLetters}></Keyboard>
       <Gallows mistakes={mistakes}/>
-      {isWinner && <p className="result-message">You won!</p>}
-      {isLooser && (
-        <p className="result-message">You lost! The word was: {word}</p>
-      )}
+      <Modal isLooser={isLooser} isWinner={isWinner} word={word} open={isModalOpened}/>
       <button className="new-game-button" onClick={resetGame}>
         New Game
       </button>
+
     </>
   );
 }
