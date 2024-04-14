@@ -76,14 +76,15 @@ function App() {
 
   return (
     <>
+      <button className="new-game-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-10 rounded" onClick={resetGame}>
+        New Game
+      </button>
       <h1 className="text-3xl font-bold underline my-5">Hangman</h1>
       <Word word={word_arr} guessedLetter={guessedLetters}/>
       <Keyboard isGameEnded={isLooser || isWinner} onClick={keyClick} guessedLetters={guessedLetters} checkedLetters={checkedLetters}></Keyboard>
       <Gallows mistakes={mistakes}/>
-      <Modal isLooser={isLooser} isWinner={isWinner} word={word} open={isModalOpened}/>
-      <button className="new-game-button" onClick={resetGame}>
-        New Game
-      </button>
+      <Modal isLooser={isLooser} isWinner={isWinner} word={word} open={isModalOpened} resetGame={resetGame}/>
+
 
     </>
   );
